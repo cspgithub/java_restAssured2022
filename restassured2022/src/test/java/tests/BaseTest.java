@@ -1,25 +1,30 @@
 package tests;
 
-import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeTest;
 
 import io.restassured.RestAssured;
-import io.restassured.http.ContentType;
-import io.restassured.specification.RequestSpecification;
 
 public class BaseTest {
 
-  RequestSpecification reqspec;
+  // RequestSpecification reqspec;
 
-  @BeforeClass
+  @BeforeTest
   public void setUpRequest() {
 
-    reqspec = RestAssured
-        .given()
-        .log()
-        .all()
-        .baseUri("https://restful-booker.herokuapp.com")
-        .basePath("/booking")
-        .contentType(ContentType.ANY);
+    RestAssured.baseURI = "https://restful-booker.herokuapp.com";
+    RestAssured.basePath = "/booking";
+    RestAssured.requestSpecification = RestAssured.given().log().all();
+    RestAssured.responseSpecification = RestAssured.expect().statusCode(200);
+
+    /*
+     * reqspec = RestAssured
+     * .given()
+     * .log()
+     * .all()
+     * .baseUri("https://restful-booker.herokuapp.com")
+     * .basePath("/booking")
+     * .contentType(ContentType.JSON);
+     */
 
   }
 }

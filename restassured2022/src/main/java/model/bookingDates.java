@@ -1,5 +1,6 @@
 package model;
-public class bookingDates {
+
+public class Bookingdates {
 
     private String checkin;
     private String checkout;
@@ -19,5 +20,4 @@ public class bookingDates {
     public void setCheckout(String checkout) {
         this.checkout = checkout;
     }
-
 }
