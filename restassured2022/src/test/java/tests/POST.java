@@ -16,9 +16,6 @@ import model.employeeData;
 
 public class POST extends BaseTest {
 
-  // private static final String jsonMockURL =
-  // "https://run.mocky.io/v3/f8d0c78c-d7a3-496c-8245-6df6a5327eb1";
-  // private static employeeData obj;
 
   @Test(enabled = false)
   public void createBooking() throws JsonMappingException, JsonProcessingException {
@@ -61,7 +58,8 @@ public class POST extends BaseTest {
         .body(completeJSON.getData())// serialize java object to json
 
         .when()
-        .post().as(employeeData.class);
+        .post()
+        .as(employeeData.class);
 
     // write object to file
 
@@ -79,6 +77,7 @@ public class POST extends BaseTest {
       employeeData empdata = mapper.readValue(new File(path), employeeData.class);
       System.out.println(empdata.getBookingid());
       System.out.println(empdata.getBooking().getFirstname());
+  
     } catch (IOException e) {
       e.printStackTrace();
     }

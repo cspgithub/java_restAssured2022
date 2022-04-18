@@ -14,7 +14,7 @@ public class BaseTest {
     RestAssured.baseURI = "https://restful-booker.herokuapp.com";
     RestAssured.basePath = "/booking";
     RestAssured.requestSpecification = RestAssured.given().log().all();
-    RestAssured.responseSpecification = RestAssured.expect().statusCode(200);
+    RestAssured.responseSpecification = RestAssured.expect().statusCode(200).statusLine("HTTP/1.1 200 OK");
 
     /*
      * reqspec = RestAssured
